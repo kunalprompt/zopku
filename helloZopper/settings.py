@@ -106,10 +106,9 @@ ADMINS = (('Kunal Sharma', 'kunalprompt@gmail.com'))
 
 from mongoengine import connect
 
- # 104.131.95.143
 _MONGODB_USER = ''
 _MONGODB_PASSWD = ''
-_MONGODB_HOST = '104.131.95.143'
+_MONGODB_HOST = ''
 _MONGODB_PORT = 27017
 _MONGODB_NAME = 'zopper'
 
