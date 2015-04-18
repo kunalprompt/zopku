@@ -6,4 +6,4 @@ def deploy():
 	print('git commit comment please - ')
 	comment = raw_input()
 	local('git commit -m "%s"'%comment )
-	local("git push origin master")
+	local("git push heroku master")
