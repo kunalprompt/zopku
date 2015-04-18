@@ -1,0 +1,108 @@
+<html lang="en" ng-app="zopCrud">
+<head>
+	<title>Pin Search</title>
+	<!-- bower:css -->
+	<link rel="stylesheet" href="../static/bower_components/bootstrap/dist/css/bootstrap.css" />
+	<!-- endbower -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+</head>
+<body ng-controller="crudCreate">
+	<div class="container-fluid">
+		<div class="row">
+			<!-- create -->
+			<div class="col-md-6 col-md-offset-3">
+				<form ng-submit="createRecord()">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							Create
+						</div>
+						<div class="panel-body">
+			        		<input type="text" class="form-control" placeholder="Pincode" ng-model="pincode" required><br>
+			        		<input type="text" class="form-control" placeholder="Office Name" ng-model="officeName"><br>
+			        		<input type="text" class="form-control" placeholder="Office Type" ng-model="officeType"><br>
+			        		<input type="text" class="form-control" placeholder="Delivery Status" ng-model="deliveryStatus"><br>
+							<input type="text" class="form-control" placeholder="Division Name" ng-model="divisionName"><br>
+							<input type="text" class="form-control" placeholder="Region Name" ng-model="regionName"><br>
+							<input type="text" class="form-control" placeholder="Circle Name" ng-model="circleName"><br>
+							<input type="text" class="form-control" placeholder="Taluk" ng-model="taluk"><br>
+							<input type="text" class="form-control" placeholder="District Name" ng-model="districtName"><br>
+							<input type="text" class="form-control" placeholder="State Name" ng-model="stateName"><br>
+						</div>
+						<div class="panel-footer">
+			        		<button type="submit" class="btn btn-default">Create</button>
+			        	</div>
+					</div>
+				</form>
+			</div><!-- /.create -->
+		</div>
+	</div>
+	<!-- bower:js -->
+	<script src="../static/bower_components/jquery/dist/jquery.js"></script>
+	<script src="../static/bower_components/angular/angular.js"></script>
+	<script src="../static/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<!-- endbower -->
+	<!-- // <script src="../static/js/crud.js"></script> -->
+<script type="text/javascript">
+var app = angular.module("zopCrud", []);
+
+app.controller("crudCreate", ["$scope", "$http",function($scope, $http){
+	$scope.officeName="";
+	$scope.pincode="";
+	$scope.officeType="";
+	$scope.deliveryStatus="";
+	$scope.divisionName="";
+	$scope.regionName="";
+	$scope.circleName="";
+	$scope.taluk="";
+	$scope.districtName="";
+	$scope.stateName="";
+	$scope.createRecord = function(){
+		var off_name = $scope.officeName;
+		var	pin_code = $scope.pincode;
+		var	off_type = $scope.officeType;
+		var	del_status = $scope.deliveryStatus;
+		var	dev_name = $scope.divisionName;
+		var	reg_name = $scope.regionName;
+		var	cir_name = $scope.circleName;
+		var	taluk = $scope.taluk;
+		var	dis_name = $scope.districtName;
+		var	st_name = $scope.stateName;
+
+		var urlToPost = '/api/create';
+		var postData = {
+			"officeName": off_name,
+			"pincode": pin_code,
+			"officeType": off_type,
+			"deliveryStatus": del_status,
+			"divisionName": dev_name,
+			"regionName": reg_name,
+			"circleName": cir_name,
+			"taluk": taluk,
+			"districtName": dis_name,
+			"stateName": st_name,
+		};
+		var reqObject = { url: urlToPost, method: "POST", data: postData, };
+        var res = $http(reqObject);
+        res.success(function(data, status, headers, config) {
+        	if (data.response==200) {alert(data.result);}
+           	else if (data.response==400) {alert("Can't create record.");}
+        });
+        res.error(function(data, status, headers, config, statusText) {
+           	if (data.response==400) {alert("Can't create record.");}
+        });
+		$scope.officeName="";
+		$scope.pincode="";
+		$scope.officeType="";
+		$scope.deliveryStatus="";
+		$scope.divisionName="";
+		$scope.regionName="";
+		$scope.circleName="";
+		$scope.taluk="";
+		$scope.districtName="";
+		$scope.stateName="";
+	};
+}]);
+</script>
+</body>
+</html>

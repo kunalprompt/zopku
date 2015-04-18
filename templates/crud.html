@@ -1,0 +1,59 @@
+<html lang="en" ng-app="zopCrud">
+<head>
+	<title>Pin Search</title>
+	<!-- bower:css -->
+	<link rel="stylesheet" href="../static/bower_components/bootstrap/dist/css/bootstrap.css" />
+	<!-- endbower -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+</head>
+<body ng-controller="crud">
+	<div class="container-fluid">
+		<div class="row">
+			<!-- read -->
+			<div class="col-md-3">
+				<form ng-submit="readRecord()">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							READ
+						</div>
+						<div class="panel-body">
+			        		<input type="text" class="form-control" placeholder="ObjectId" ng-model="oid">
+						</div>
+						<div class="panel-footer">
+			        		<button type="submit" class="btn btn-default">Search</button>
+			        	</div>
+					</div>
+				</form>
+				<div class="row">
+					<div class="col-md-12" align="justify">
+						<textarea class="form-control" id="readResponse" rows="10"></textarea>
+					</div>
+				</div>
+			</div><!-- /.read -->
+			<!-- delete -->
+			<div class="col-md-3">
+				<form ng-submit="deleteRecord()">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							Delete
+						</div>
+						<div class="panel-body">
+			        		<input type="text" class="form-control" placeholder="ObjectId" ng-model="oid">
+						</div>
+						<div class="panel-footer">
+			        		<button type="submit" class="btn btn-default">Delete</button>
+			        	</div>
+					</div>
+				</form>
+			</div><!-- /.delete -->
+		</div>
+	</div>
+	<!-- bower:js -->
+	<script src="../static/bower_components/jquery/dist/jquery.js"></script>
+	<script src="../static/bower_components/angular/angular.js"></script>
+	<script src="../static/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<!-- endbower -->
+	<script src="../static/js/crud.js"></script>
+</body>
+</html>

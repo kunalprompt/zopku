@@ -1,0 +1,12 @@
+virtualenv venv
+
+source venv/bin/activate
+
+pip install -r requirements.txt
+
+mongoimport --db zopper --collection pincodes --type csv --headerline --file all_india_pin_code.csv
+
+settings.py Django updated
+models.py added
+views.py added
+

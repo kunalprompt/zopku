@@ -1,0 +1,1 @@
+web: gunicorn helloZopper.wsgi --log-file -

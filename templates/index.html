@@ -1,0 +1,130 @@
+<html lang="en" ng-app="zop">
+<head>
+	<title>Pin Search</title>
+	<!-- bower:css -->
+	<link rel="stylesheet" href="../static/bower_components/bootstrap/dist/css/bootstrap.css" />
+	<!-- endbower -->
+
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/index.css">
+</head>
+<body ng-controller="search">
+	<!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top" ng-show="output_list.length > 1" >
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">PIN <i class="fa fa-map-marker"></i> SEARCH</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        	<form class="navbar-form" ng-submit="fetchRecords()">
+        		<input type="text" class="form-control" placeholder="Locality" ng-model="locality" required>
+        		<input type="text" class="form-control" placeholder="State" ng-model="state">
+        		<input type="text" class="form-control" placeholder="District" ng-model="district">
+        		<input type="text" class="form-control" placeholder="Pincode" ng-model="pincode">
+        		<button type="submit" class="btn btn-default">Search</button>
+        	</form>
+        </div><!--/.nav-collapse -->
+      </div><!--/.container -->
+    </nav><!--/.navbar -->
+
+    <!-- body search -->
+    <div class="contiainer-fluid">
+    	<!-- search panel container -->
+	    <div class="container">
+	    	<form class="form-inline" ng-submit="fetchRecords()">
+		    	<div class="row">
+		    		<div class=" launch-page col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3" ng-show="output_list.length < 1">
+		    			<div class="panel panel-default">
+		    				<div class="panel-heading" style="text-align:center;">
+		    					<h4 class="page-header-text">PIN <i class="fa fa-map-marker"></i> SEARCH</h4>
+		    				</div>
+		    				<div class="panel-body">
+		    					<div>
+		    						<input type="text" class="form-control" placeholder="Locality" ng-model="locality" required>
+		    					</div>
+		    					<div>
+		    						<input type="text" class="form-control" placeholder="State" ng-model="state">
+		    					</div>
+		    					<div>
+			    					<input type="text" class="form-control" placeholder="District" ng-model="district">
+		    					</div>
+		    					<div>
+		    						<input type="text" class="form-control" placeholder="Pincode" ng-model="pincode">
+		    					</div>
+		    					<hr>
+		    					<div style="text-align:center;">
+		    						<button type="submit" class="btn btn-default" style="width:100%;">Search</button>
+		    					</div>
+		    				</div>
+		    				<div class="panel-footer">
+		    					&copy;2014, All rights reserved with Kunal Sharma - kunalprompt@gmail.com
+		    				</div>
+		    			<div><!-- /.panel -->
+		    		</div><!-- /.col -->
+		    	</div><!-- /.row -->
+		    </form><!-- /.form -->
+	    </div><!-- /.container -->
+	    <!-- /.search panel container -->
+
+
+	    <div class="container">
+	    	 <!-- search-box -->
+			<div class="row" ng-show="output_list.length >= 1 ">
+				<div class="col-md-6 col-sm-6"></div>
+				<div class="col-md-6 col-sm-6">
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">
+							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+						</span>
+						<input type="text" class="form-control" aria-describedby="basic-addon1" ng-model="searchText" placeholder="Search for ... ">
+					</div>
+				</div>
+			</div> <!-- /.search-box -->
+	    	<div class="row" ng-show="(filteredData = ( output_list | filter:searchText)) && filteredData.length >= 1">
+	    		<div class="col-sm-12 col-md-12">
+	    			<div class="table-responsive">
+		    			<table class="table table-hover">
+		    				<thead>
+		    					<tr>
+		    						<th class="table-columns small">#</th>
+		    						<th class="table-columns big">Pincode</th>
+		    						<th class="table-columns big">Post Office</th>
+		    						<th class="table-columns big">Locality</th>
+		    						<th class="table-columns big">District</th>
+		    						<th class="table-columns big">State</th>
+		    					</tr>
+	    					</thead>	    					
+	    					<tbody>
+		    					<tr ng-repeat="item in filteredData">
+		    						<td class="small" ng-bind="$index+1"></td>
+		    						<td class="big" ng-bind="item.pincode"></td>
+		    						<td class="big" ng-bind="item.officename"></td>
+		    						<td class="big" ng-bind="item.taluk"></td>
+		    						<td class="big" ng-bind="item.district"></td>
+		    						<td class="big" ng-bind="item.state"></td>
+		    					</tr>
+	    					</tbody>
+		    			</table>
+		    		</div><!--/.table-responsive-->
+	    		</div><!--/.col-->
+	    	</div><!--/.row-->
+	    </div><!--/.container-->
+    </div> <!-- /.container-fluid -->
+    <!-- /.body search -->
+
+
+
+	<!-- bower:js -->
+	<script src="../static/bower_components/jquery/dist/jquery.js"></script>
+	<script src="../static/bower_components/angular/angular.js"></script>
+	<script src="../static/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<!-- endbower -->
+	<script src="../static/js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+venv
+*.pyc
+staticfiles
+Gruntfile.js
+package.json
+node_modules
