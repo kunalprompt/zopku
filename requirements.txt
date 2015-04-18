@@ -1,4 +1,5 @@
 Django==1.7.7
+Fabric==1.10.1
 argparse==1.2.1
 dj-database-url==0.3.0
 dj-static==0.0.6
@@ -7,11 +8,14 @@ django-secure==1.0.1
 django-social-auth==0.7.28
 django-toolbelt==0.0.1
 djangotoolbox==1.6.2
+ecdsa==0.13
 gunicorn==19.3.0
 httplib2==0.9
 mongoengine==0.8.7
 oauth2==1.5.211
+paramiko==1.15.2
 psycopg2==2.6
+pycrypto==2.6.1
 pymongo==2.8
 python-openid==2.2.5
 static3==0.5.1
