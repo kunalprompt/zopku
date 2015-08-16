@@ -110,7 +110,7 @@ _MONGODB_USER = ''
 _MONGODB_PASSWD = ''
 _MONGODB_HOST = ''
 _MONGODB_PORT = 27017
-_MONGODB_NAME = 'zopper'
+_MONGODB_NAME = 'zopku'
 
 connect(db=_MONGODB_NAME, host=_MONGODB_HOST, port=_MONGODB_PORT, username=_MONGODB_USER, password=_MONGODB_PASSWD)
 
